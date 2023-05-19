@@ -8,6 +8,7 @@ import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
 import Loading from "../pages/loading/Loading";
 import Toys from "../pages/toys/Toys";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -21,27 +22,29 @@ const router = createBrowserRouter([
       {
         path: "/truck/:id",
         element: (
-          
-            <Toys/>
-          
+          <PrivateRoutes>
+            <Toys />
+          </PrivateRoutes>
         ),
         loader: () => fetch(`http://localhost:5000/truck`),
       },
       {
         path: "/train/:id",
         element: (
-          
-          <Toys/>
-          
+          <PrivateRoutes>
+            {" "}
+            <Toys />
+          </PrivateRoutes>
         ),
         loader: () => fetch(`http://localhost:5000/train`),
       },
       {
         path: "/car/:id",
         element: (
-          
-            <Toys/>
-          
+          <PrivateRoutes>
+            {" "}
+            <Toys />
+          </PrivateRoutes>
         ),
         loader: () => fetch(`http://localhost:5000/formula-one`),
       },
@@ -67,8 +70,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/loader",
-        element: <Loading/>
-      }
+        element: <Loading />,
+      },
     ],
   },
 ]);

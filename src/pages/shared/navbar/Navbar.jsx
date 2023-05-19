@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then()
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div>
       <div className="navbar bg-sky-100">
@@ -28,14 +37,14 @@ const Navbar = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a>All Toys</a>
+                <Link to="/all-toys">All Toys</Link>
               </li>
-              
+
               <li>
-                <a>Add a Toy</a>
+                <Link to="/add-toy">Add a Toy</Link>
               </li>
               <li>
-                <a>Blogs</a>
+                <Link to="/blogs"> Blogs</Link>
               </li>
             </ul>
           </div>
@@ -47,7 +56,7 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <NavLink to="/">Home</NavLink>
+              <Link to="/">Home</Link>
             </li>
             {/* <li tabIndex={0}>
               <a>
@@ -72,18 +81,36 @@ const Navbar = () => {
               </ul>
             </li> */}
             <li>
-              <NavLink to="/all-toys">All Toys</NavLink>
+              <Link to="/all-toys">All Toys</Link>
             </li>
             <li>
-              <NavLink to="/add-toy">Add a Toy</NavLink>
+              <Link to="/add-toy">Add a Toy</Link>
             </li>
             <li>
-              <NavLink to="/blogs">Blogs</NavLink>
+              <Link to="/blogs">Blogs</Link>
             </li>
           </ul>
         </div>
         <div className="navbar-end">
-          <NavLink to="/login">Login</NavLink>
+          {user && (
+            <span className="mr-12" title={user.displayName}>
+              <img
+                className="h-10 w-10 rounded-full"
+                src={user?.photo}
+                alt=""
+              />
+            </span>
+          )}
+          <span className="mr-12">
+            {user ? (
+              <button onClick={handleLogOut}>
+                {" "}
+                <NavLink>Logout</NavLink>
+              </button>
+            ) : (
+              <NavLink to="/login">Login</NavLink>
+            )}
+          </span>
         </div>
       </div>
     </div>

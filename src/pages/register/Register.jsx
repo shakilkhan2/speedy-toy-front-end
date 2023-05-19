@@ -1,9 +1,39 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Register = () => {
+  const { createUser } = useContext(AuthContext);
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+    // setError({ isError: false, message: "" });
+
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const photo = form.photo.value;
+    console.log(name, email, password, photo);
+
+    createUser(email, password)
+      .then((result) => {
+        const createdUser = result.user;
+        console.log(createdUser);
+        // updateUser(name, photo);
+        form.reset();
+      })
+      .catch((error) => {
+        console.error(error);
+        // setError({ isError: true, message: error.message });
+      });
+  };
+
   return (
-    <form className="bg-white border rounded-lg border-sky-500 w-[50%] mx-auto py-12 my-8 shadow-2xl">
+    <form
+      onSubmit={handleRegister}
+      className="bg-white border rounded-lg border-sky-500 w-[50%] mx-auto py-12 my-8 shadow-2xl"
+    >
       <h1 className="text-center text-3xl text-sky-500 font-bold">
         Please Register
       </h1>
@@ -44,7 +74,7 @@ const Register = () => {
           id=""
           placeholder="photo"
           required
-        /> 
+        />
         <br />
         <button className="text-center border rounded-lg border-sky-500 bg-white text-sky-500 px-8 py-3 mt-8 font-semibold hover:text-white hover:bg-sky-500">
           Register
