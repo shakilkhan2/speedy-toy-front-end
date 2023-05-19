@@ -3,25 +3,26 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import CategoryOne from "../categoryOne/CategoryOne";
 import CategoryTwo from "../categoryTwo/CategoryTwo";
+import CategoryThree from "../categoryThree/CategoryThree";
 
 const Categories = () => {
   return (
     <div>
-      <Tabs>
-        <TabList>
+      <Tabs className=" ">
+        <TabList className="text-center text-sky-500 font-bold bg-slate-300">
           <Tab>Sports Car</Tab>
           <Tab>Train</Tab>
-          <Tab>Car </Tab>
+          <Tab>Truck</Tab>
         </TabList>
 
         <TabPanel>
           <CategoryOne />
         </TabPanel>
         <TabPanel>
-          <CategoryTwo/>
+          <CategoryTwo />
         </TabPanel>
         <TabPanel>
-          <h2>Any content 2</h2>
+          <CategoryThree />
         </TabPanel>
       </Tabs>
     </div>
