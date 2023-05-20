@@ -9,6 +9,7 @@ const Home = () => {
     <div>
       <Slider />
       <Gallery />
+      <h1 className="text-center text-4xl font-bold text-sky-600 mt-8 mb-4 ">Shop by Categories</h1>
     <Categories/>
       
     </div>
