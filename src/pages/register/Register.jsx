@@ -1,13 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUser } = useContext(AuthContext);
+
+  // err
+  const [error, setError] = useState({ isError: false, message: "" });
 
   const handleRegister = (event) => {
     event.preventDefault();
-    // setError({ isError: false, message: "" });
+    setError({ isError: false, message: "" });
 
     const form = event.target;
     const name = form.name.value;
@@ -20,12 +23,12 @@ const Register = () => {
       .then((result) => {
         const createdUser = result.user;
         console.log(createdUser);
-        // updateUser(name, photo);
+        updateUser(name, photo);
         form.reset();
       })
       .catch((error) => {
         console.error(error);
-        // setError({ isError: true, message: error.message });
+        setError({ isError: true, message: error.message });
       });
   };
 
@@ -74,6 +77,11 @@ const Register = () => {
           placeholder="photo"
         />
         <br />
+        {error.isError && (
+          <p className="my-8 text-red-600 text-xs text-center">
+            {error.message}
+          </p>
+        )}
         <button className="text-center border rounded-lg border-sky-500 bg-white text-sky-500 px-8 py-3 mt-8 font-semibold hover:text-white hover:bg-sky-500">
           Register
         </button>
