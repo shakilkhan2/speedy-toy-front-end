@@ -21,7 +21,7 @@ const CategoryTwo = () => {
       </h3>
       <div className="grid grid-cols-3 gap-4">
         {myTrains.map((train) => (
-          <div key={train.id} className=" bg-gradient-to-br from-pink-100 to-sky-300  p-4 rounded-lg">
+          <div key={train.id} className=" bg-gradient-to-br from-amber-100 to-sky-300  p-4 rounded-lg">
             <img className="h-52 rounded-lg " src={train.picture} alt="" />
             <div className="text-center">
               <h4 className="text-black text-lg font-bold">{train.name}</h4>

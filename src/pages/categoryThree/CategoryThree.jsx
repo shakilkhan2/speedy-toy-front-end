@@ -21,7 +21,7 @@ const CategoryThree = () => {
       </h3>
       <div className="grid grid-cols-4 gap-4">
         {myTrucks.map((car) => (
-          <div key={car.id} className=" bg-gradient-to-br from-pink-100 to-sky-300 p-4 rounded-lg">
+          <div key={car.id} className=" bg-gradient-to-br from-amber-100 to-sky-300 p-4 rounded-lg">
             <img className="h-52 rounded-lg" src={car.picture} alt="" />
             <div className="text-center">
               <h4 className="text-black text-lg font-bold">{car.name}</h4>

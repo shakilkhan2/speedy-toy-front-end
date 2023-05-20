@@ -12,6 +12,7 @@ import Trains from "../pages/trains/Trains";
 import PrivateRoutes from "./PrivateRoutes";
 import MyToys from "../pages/myToys/MyToys";
 import ToyDetails from "../pages/toyDetails/ToyDetails";
+import ErrorPage from "../pages/error/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -55,7 +56,9 @@ const router = createBrowserRouter([
         path: "toy-details/:id",
         element: <ToyDetails />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/addedtoys/${params.id}`),
+          fetch(
+            `https://speedy-toy-server-shakilkhan2.vercel.app/addedtoys/${params.id}`
+          ),
       },
       {
         path: "/all-toys",
@@ -84,6 +87,10 @@ const router = createBrowserRouter([
       {
         path: "/loader",
         element: <Loading />,
+      },
+      {
+        path: "*",
+        element: <ErrorPage />,
       },
     ],
   },

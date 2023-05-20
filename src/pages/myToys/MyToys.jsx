@@ -8,7 +8,9 @@ const MyToys = () => {
   const [myToys, setMyToys] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/addedtoys?email=${user?.email}`)
+    fetch(
+      `https://speedy-toy-server-shakilkhan2.vercel.app/addedtoys?email=${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => setMyToys(data));
   }, [user?.email]);
@@ -17,9 +19,12 @@ const MyToys = () => {
   const handleDelete = (id) => {
     const proceed = window.confirm("Delete?");
     if (proceed) {
-      fetch(`http://localhost:5000/addedtoys/${id}`, {
-        method: "DELETE",
-      })
+      fetch(
+        `https://speedy-toy-server-shakilkhan2.vercel.app/addedtoys/${id}`,
+        {
+          method: "DELETE",
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           // Perform actions or update UI based on the response
@@ -34,10 +39,10 @@ const MyToys = () => {
 
   return (
     <div>
-      <h1 className="text-center text-3xl text-sky-500 font-bold">
+      <h1 className="text-center text-3xl my-8 text-sky-500 font-bold">
         My Toys:{myToys.length}
       </h1>
-      <div>
+      <div className="rounded-lg border-sky-500">
         <div className="overflow-x-auto w-full ">
           <table className="table w-full">
             {/* head */}

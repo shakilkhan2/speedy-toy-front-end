@@ -23,7 +23,7 @@ const CategoryOne = () => {
         {myCars.map((car) => (
           <div
             key={car.id}
-            className=" bg-gradient-to-br from-pink-100 to-sky-300 p-4 rounded-lg drop-shadow-2xl "
+            className=" bg-gradient-to-br from-amber-100 to-sky-300 p-4 rounded-lg drop-shadow-2xl "
           >
             <img className="h-52 rounded-lg" src={car.picture} alt="" />
             <div className="text-center">

@@ -7,17 +7,17 @@ const AllToys = () => {
   const [allToys, setAllToys] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/addedtoys")
+    fetch("https://speedy-toy-server-shakilkhan2.vercel.app/addedtoys")
       .then((res) => res.json())
       .then((data) => setAllToys(data));
   }, []);
 
   return (
     <div>
-      <h1 className="text-center text-3xl text-sky-500 font-bold">
+      <h1 className="text-center text-3xl my-8 text-sky-500 font-bold">
         All Toys:{allToys.length}
       </h1>
-      <div className="border border-sky-500">
+      <div className="border rounded-lg border-sky-500">
         <div className="overflow-x-auto w-full ">
           <table className="table w-full">
             {/* head */}

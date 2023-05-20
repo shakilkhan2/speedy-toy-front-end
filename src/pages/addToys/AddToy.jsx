@@ -31,7 +31,7 @@ const AddToy = () => {
     };
     console.log(toyInfo);
 
-    fetch("http://localhost:5000/addedToys", {
+    fetch("https://speedy-toy-server-shakilkhan2.vercel.app/addedToys", {
       method: "POST",
       headers: {
         "content-type": "application/json",
