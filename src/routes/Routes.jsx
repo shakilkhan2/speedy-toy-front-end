@@ -27,7 +27,7 @@ const router = createBrowserRouter([
             <Toys />
           </PrivateRoutes>
         ),
-        loader: () => fetch(`http://localhost:5000/toys`),
+        loader: () => fetch(`https://speedy-toy-server.vercel.app/toys`),
       },
       {
         path: "/train/:id",
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
             <Trains />
           </PrivateRoutes>
         ),
-        loader: () => fetch(`http://localhost:5000/toys`),
+        loader: () => fetch(`https://speedy-toy-server.vercel.app/toys`),
       },
       {
         path: "/car/:id",
@@ -47,7 +47,7 @@ const router = createBrowserRouter([
             <Toys />
           </PrivateRoutes>
         ),
-        loader: () => fetch(`http://localhost:5000/toys`),
+        loader: () => fetch(`https://speedy-toy-server.vercel.app/toys`),
       },
       {
         path: "/all-toys",

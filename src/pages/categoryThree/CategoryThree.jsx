@@ -5,7 +5,7 @@ const CategoryThree = () => {
   const [cars, setCars] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/toys")
+    fetch("https://speedy-toy-server.vercel.app/toys")
       .then((res) => res.json())
       .then((data) => setCars(data))
       .catch((error) => console.log(error));
