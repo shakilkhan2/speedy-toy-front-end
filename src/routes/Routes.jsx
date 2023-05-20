@@ -11,6 +11,7 @@ import Toys from "../pages/toys/Toys";
 import Trains from "../pages/trains/Trains";
 import PrivateRoutes from "./PrivateRoutes";
 import MyToys from "../pages/myToys/MyToys";
+import ToyDetails from "../pages/toyDetails/ToyDetails";
 
 const router = createBrowserRouter([
   {
@@ -51,12 +52,18 @@ const router = createBrowserRouter([
         loader: () => fetch(`https://speedy-toy-server.vercel.app/toys`),
       },
       {
+        path: "toy-details/:id",
+        element: <ToyDetails />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/addedtoys/${params.id}`),
+      },
+      {
         path: "/all-toys",
         element: <AllToys />,
       },
       {
         path: "my-toys",
-        element: <MyToys/>
+        element: <MyToys />,
       },
       {
         path: "/add-toy",

@@ -3,9 +3,9 @@ import { useLoaderData, useParams } from "react-router-dom";
 
 const Toys = () => {
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
   const allTrucks = useLoaderData();
-  console.log(allTrucks);
+  // console.log(allTrucks);
   const trucks = allTrucks.filter((truck) => truck.id == id);
   console.log(trucks);
 
