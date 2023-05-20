@@ -54,7 +54,7 @@ const router = createBrowserRouter([
       },
       {
         path: "toy-details/:id",
-        element: <ToyDetails />,
+        element: <PrivateRoutes><ToyDetails /></PrivateRoutes>,
         loader: ({ params }) =>
           fetch(
             `https://speedy-toy-server-shakilkhan2.vercel.app/addedtoys/${params.id}`
@@ -88,11 +88,11 @@ const router = createBrowserRouter([
         path: "/loader",
         element: <Loading />,
       },
-      {
-        path: "*",
-        element: <ErrorPage />,
-      },
     ],
+  },
+  {
+    path: "*",
+    element: <ErrorPage />,
   },
 ]);
 

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+import { BiUser } from "react-icons/bi";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -48,8 +49,15 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <Link to="/" className="cursor-pointer normal-case text-xl">
-            SpeedyToy
+          <Link
+            to="/"
+            className="ms-12 flex cursor-pointer normal-case text-xl"
+          >
+            <img
+              className="h-12"
+              src="https://i.ibb.co/V3pwRyT/346157748-166787649413673-2121228578006350730-n-removebg-preview.png"
+              alt=""
+            />
           </Link>
           {/* nav for large screen */}
         </div>
@@ -99,14 +107,26 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          {user && (
-            <span className="mr-12" title={user.displayName}>
-              <img
-                className="h-10 w-10 rounded-full"
-                src={user?.photoURL}
-                alt=""
-              />
-            </span>
+          {user?.uid && (
+            <>
+              {" "}
+              {user?.photoURL ? (
+                <span className="mr-12" title={user?.displayName}>
+                  <img
+                    className="h-10 w-10 rounded-full"
+                    src={user?.photoURL}
+                    alt=""
+                  />
+                </span>
+              ) : (
+                <span
+                  title={user?.displayName}
+                  className="h-10 w-10 border border-gray-600 rounded-full flex justify-center mx-3 items-center text-2xl "
+                >
+                  <BiUser />
+                </span>
+              )}
+            </>
           )}
           <span className="mr-12">
             {user ? (

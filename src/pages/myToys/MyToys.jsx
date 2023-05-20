@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
@@ -29,6 +30,9 @@ const MyToys = () => {
         .then((data) => {
           // Perform actions or update UI based on the response
           console.log(data);
+          const restData = myToys.filter((toy) => toy._id !== id);
+          setMyToys(restData);
+          toast.success("Successfully Deleted!");
         })
         .catch((error) => {
           // Handle any errors that occurred during the request
@@ -100,7 +104,7 @@ const MyToys = () => {
                     <Link>
                       {" "}
                       <button
-                        onClick={handleDelete}
+                        onClick={() => handleDelete(toys._id)}
                         className="btn btn-ghost btn-xs"
                       >
                         Delete

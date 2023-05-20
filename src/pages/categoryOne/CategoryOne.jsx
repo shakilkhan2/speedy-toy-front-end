@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const CategoryOne = () => {
+  const { user } = useContext(AuthContext);
   const [cars, setCars] = useState([]);
 
   useEffect(() => {
@@ -34,7 +37,13 @@ const CategoryOne = () => {
               </h4>
             </div>
             <Link to={`/car/${car.id}`}>
-              <button className="bg-gradient-to-br from-sky-400 to-sky-700 hover:bg-gradient-to-br hover:from-sky-700 hover:to-sky-500 w-full p-2 mt-2 rounded-lg text-xl font-bold text-white">
+              <button
+                onClick={() => {
+                  if(user?.uid ) return
+                   toast.error("You have to log in first to view details");
+                }}
+                className="bg-gradient-to-br from-sky-400 to-sky-700 hover:bg-gradient-to-br hover:from-sky-700 hover:to-sky-500 w-full p-2 mt-2 rounded-lg text-xl font-bold text-white"
+              >
                 View Details
               </button>
             </Link>

@@ -10,21 +10,28 @@ const Home = () => {
       <div>
         <Slider></Slider>
       </div>
-      <h1 className="text-center text-4xl font-bold text-sky-600 mt-8 mb-4 ">
-        We are happy to bring Smile.. 
+      <h1
+        data-aos="flip-right"
+        className="text-center text-4xl font-bold text-sky-600 mt-8 mb-4 "
+      >
+        We are happy to bring Smile..
       </h1>
-      
+
       <Gallery />
-      <h1 className="text-center text-4xl font-bold text-sky-600 mt-8 mb-4 ">
+      <h1
+        data-aos="flip-left"
+        className="text-center text-4xl font-bold text-sky-600 mt-8 mb-4 "
+      >
         Shop by Categories
       </h1>
       <Categories />
-      <div className="mt-12 cursor-pointer">
-              <img className="w-[99%] mx-auto"
-                src="https://cdn.shopify.com/s/files/1/2598/1878/files/GameSubBox_BannerSkinny_ec8fb89f-afee-45ce-b26d-56f4f0512ac6_1200x.png?v=1669947770"
-                alt=""
-              />
-            </div>
+      <div  className="mt-12 cursor-pointer">
+        <img data-aos="flip-left"
+          className="w-[99%] mx-auto"
+          src="https://cdn.shopify.com/s/files/1/2598/1878/files/GameSubBox_BannerSkinny_ec8fb89f-afee-45ce-b26d-56f4f0512ac6_1200x.png?v=1669947770"
+          alt=""
+        />
+      </div>
       <div>
         <form className="bg-sky-500 rounded-lg w-[70%] mx-auto py-12 mt-12 mb-20">
           <div className="mb-8">
@@ -42,10 +49,8 @@ const Home = () => {
                 Subscribe
               </button>
             </div>
-            
           </div>
         </form>
-        
       </div>
     </div>
   );

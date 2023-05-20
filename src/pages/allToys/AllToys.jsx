@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 const AllToys = () => {
   const { user } = useContext(AuthContext);
   const [allToys, setAllToys] = useState([]);
 
   useEffect(() => {
-    fetch("https://speedy-toy-server-shakilkhan2.vercel.app/addedtoys")
+    fetch("https://speedy-toy-server-shakilkhan2.vercel.app/addedtoys?limit=20")
       .then((res) => res.json())
       .then((data) => setAllToys(data));
   }, []);
@@ -59,7 +60,17 @@ const AllToys = () => {
                   <th>
                     <Link to={`/toy-details/${toys._id}`}>
                       {" "}
-                      <button className="btn btn-ghost btn-xs">details</button>
+                      <button
+                        onClick={() => {
+                          if (user?.uid) return;
+                          toast.error(
+                            "You have to log in first to view details"
+                          );
+                        }}
+                        className="btn btn-ghost btn-xs"
+                      >
+                        details
+                      </button>
                     </Link>
                   </th>
                 </tr>
