@@ -42,7 +42,7 @@ const Login = () => {
 
   // google sign in
   const handleGoogleSignIn = () => {
-    console.log("google goolge ggoole");
+    // console.log("google goolge ggoole");
     setError({ isError: false, message: "" });
     signInWithPopup(auth, provider)
       .then((result) => {

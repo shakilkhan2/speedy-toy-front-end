@@ -5,18 +5,22 @@ const CategoryThree = () => {
   const [cars, setCars] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/truck")
+    fetch("http://localhost:5000/toys")
       .then((res) => res.json())
       .then((data) => setCars(data))
       .catch((error) => console.log(error));
   }, []);
+
+  const myTrucks = cars.filter((car) => car.category === "truck");
+  console.log(myTrucks);
+
   return (
     <div>
       <h3 className="text-center text-3xl font-bold text-sky-500 mt-8 mb-4 ">
         Tricky Truck
       </h3>
       <div className="grid grid-cols-4 gap-4">
-        {cars.map((car) => (
+        {myTrucks.map((car) => (
           <div key={car.id} className=" bg-sky-200 p-4 rounded-lg">
             <img className="h-52 rounded-lg" src={car.picture} alt="" />
             <div className="text-center">
