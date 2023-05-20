@@ -13,6 +13,25 @@ const MyToys = () => {
       .then((data) => setMyToys(data));
   }, [user?.email]);
 
+  // delete toys:
+  const handleDelete = (id) => {
+    const proceed = window.confirm("Delete?");
+    if (proceed) {
+      fetch(`http://localhost:5000/addedtoys/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          // Perform actions or update UI based on the response
+          console.log(data);
+        })
+        .catch((error) => {
+          // Handle any errors that occurred during the request
+          console.error(error);
+        });
+    }
+  };
+
   return (
     <div>
       <h1 className="text-center text-3xl text-sky-500 font-bold">
@@ -29,7 +48,8 @@ const MyToys = () => {
                 <th>Price</th>
                 <th>Seller</th>
                 <th>Seller Email</th>
-                <th>Available Quantity</th>
+                <th>Available </th>
+                <th>Details</th>
                 <th>Update</th>
                 <th>Delete</th>
               </tr>
@@ -60,6 +80,12 @@ const MyToys = () => {
 
                   <td>{toys.quantity}pc</td>
                   <th>
+                    <Link to={`/toy-details/${toys._id}`}>
+                      {" "}
+                      <button className="btn btn-ghost btn-xs">Details</button>
+                    </Link>
+                  </th>
+                  <th>
                     <Link>
                       {" "}
                       <button className="btn btn-ghost btn-xs">Update</button>
@@ -68,7 +94,12 @@ const MyToys = () => {
                   <th>
                     <Link>
                       {" "}
-                      <button className="btn btn-ghost btn-xs">Delete</button>
+                      <button
+                        onClick={handleDelete}
+                        className="btn btn-ghost btn-xs"
+                      >
+                        Delete
+                      </button>
                     </Link>
                   </th>
                 </tr>

@@ -66,6 +66,7 @@ const AddToy = () => {
             type="text"
             name="photo"
             id=""
+            defaultValue="https://m.media-amazon.com/images/I/713QEw126JL._AC_SX569_.jpg"
             placeholder="photo url"
             required
           />
