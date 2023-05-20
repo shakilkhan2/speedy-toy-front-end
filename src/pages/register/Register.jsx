@@ -46,7 +46,6 @@ const Register = () => {
           name="name"
           id=""
           placeholder="Name"
-          required
         />{" "}
         <br />
         <input
@@ -73,7 +72,6 @@ const Register = () => {
           name="photo"
           id=""
           placeholder="photo"
-          required
         />
         <br />
         <button className="text-center border rounded-lg border-sky-500 bg-white text-sky-500 px-8 py-3 mt-8 font-semibold hover:text-white hover:bg-sky-500">

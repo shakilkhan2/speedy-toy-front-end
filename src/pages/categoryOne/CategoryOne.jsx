@@ -12,7 +12,7 @@ const CategoryOne = () => {
   }, []);
 
   const myCars = cars.filter((car) => car.category === "car");
-  console.log(myCars);
+  // console.log(myCars);
 
   return (
     <div>
@@ -21,7 +21,10 @@ const CategoryOne = () => {
       </h3>
       <div className="grid grid-cols-4 gap-4  ">
         {myCars.map((car) => (
-          <div key={car.id} className=" bg-sky-200 p-4 rounded-lg drop-shadow-2xl ">
+          <div
+            key={car.id}
+            className=" bg-sky-200 p-4 rounded-lg drop-shadow-2xl "
+          >
             <img className="h-52 rounded-lg" src={car.picture} alt="" />
             <div className="text-center">
               <h4 className="text-black text-lg font-bold">{car.name}</h4>
