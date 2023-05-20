@@ -10,6 +10,7 @@ import Loading from "../pages/loading/Loading";
 import Toys from "../pages/toys/Toys";
 import Trains from "../pages/trains/Trains";
 import PrivateRoutes from "./PrivateRoutes";
+import MyToys from "../pages/myToys/MyToys";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: "/all-toys",
         element: <AllToys />,
+      },
+      {
+        path: "my-toys",
+        element: <MyToys/>
       },
       {
         path: "/add-toy",

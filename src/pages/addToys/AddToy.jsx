@@ -1,13 +1,57 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const AddToy = () => {
+  const { user } = useContext(AuthContext);
+
+  const handleAddAToy = (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const seller = form.seller.value;
+    const email = form.email.value;
+    const category = form.category.value;
+    const price = form.price.value;
+    const rating = form.rating.value;
+    const quantity = form.quantity.value;
+    const about = form.about.value;
+
+    const toyInfo = {
+      productName: name,
+      photo: photo,
+      seller: seller,
+      sellerEmail: email,
+      category: category,
+      price: price,
+      rating: rating,
+      quantity: quantity,
+      description: about,
+    };
+    console.log(toyInfo);
+
+    fetch("http://localhost:5000/addedToys", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(toyInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  };
+
   return (
     <div>
-      <form className="bg-white border rounded-lg border-sky-500 w-[80%] mx-auto py-12 my-8 shadow-2xl">
-      <h1 className="text-center text-3xl text-sky-500 font-bold">
-        Add Toys
-      </h1>
-      <hr className="w-[70%] mx-auto mt-2 mb-8 border-sky-500" />
+      <form
+        onSubmit={handleAddAToy}
+        className="bg-white border rounded-lg border-sky-500 w-[80%] mx-auto py-12 my-8 shadow-2xl"
+      >
+        <h1 className="text-center text-3xl text-sky-500 font-bold">
+          Add Toys
+        </h1>
+        <hr className="w-[70%] mx-auto mt-2 mb-8 border-sky-500" />
         <div className=" flex justify-between">
           <input
             className=" mx-auto pl-2 py-3 w-[45%] my-6 border rounded-lg border-sky-500"
@@ -32,6 +76,7 @@ const AddToy = () => {
             type="text"
             name="seller"
             id=""
+            defaultValue={user?.displayName}
             placeholder="seller name"
             required
           />
@@ -40,24 +85,25 @@ const AddToy = () => {
             type="text"
             name="email"
             id=""
+            defaultValue={user?.email}
             placeholder="seller email"
             required
           />
         </div>
         <div className=" flex justify-between">
-        <select
-      className="mx-auto pl-2 py-3 w-[45%] my-6 border rounded-lg border-sky-500"
-      name="category"
-      id=""
-      required
-    >
-      <option value="" disabled selected>
-        Select a category
-      </option>
-      <option value="car">Car</option>
-      <option value="train">Train</option>
-      <option value="truck">Truck</option>
-    </select>
+          <select
+            className="mx-auto pl-2 py-3 w-[45%] my-6 border rounded-lg border-sky-500"
+            name="category"
+            id=""
+            required
+          >
+            <option value="" disabled selected>
+              Select a category
+            </option>
+            <option value="car">Car</option>
+            <option value="train">Train</option>
+            <option value="truck">Truck</option>
+          </select>
           <input
             className="mx-auto pl-2 py-3 w-[45%] my-6 border rounded-lg border-sky-500"
             type="text"
@@ -90,7 +136,7 @@ const AddToy = () => {
             className=" mx-auto pl-2 py-3 w-[95%] mt-6 border rounded-lg border-sky-500"
             type="text"
             placeholder="description"
-            name="detail description"
+            name="about"
             id=""
             cols="20"
             rows="5"

@@ -85,7 +85,7 @@ const Navbar = () => {
             </li>
             {user && (
               <li>
-                <Link to="/all-toys">My Toys</Link>
+                <Link to="/my-toys">My Toys</Link>
               </li>
             )}
             {user && (
