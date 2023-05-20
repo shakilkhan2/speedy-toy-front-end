@@ -78,7 +78,7 @@ const Register = () => {
         />
         <br />
         {error.isError && (
-          <p className="my-8 text-red-600 text-xs text-center">
+          <p className="mt-4 text-red-600 text-xs text-center">
             {error.message}
           </p>
         )}

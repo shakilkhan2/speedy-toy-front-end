@@ -84,6 +84,11 @@ const Login = () => {
           required
         />{" "}
         <br />
+        {error.isError && (
+          <p className="mt-4 text-red-600 text-xs text-center">
+            {error.message}
+          </p>
+        )}
         <button className="text-center border rounded-lg  border-sky-500 bg-white text-sky-500 px-8 py-3 mt-8 font-semibold hover:text-white hover:bg-sky-500 w-[20%] mx-auto">
           Login
         </button>
