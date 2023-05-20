@@ -13,6 +13,9 @@ const Slider = () => {
             <a href="#slide4" className="btn btn-circle">
               ❮
             </a>
+            {/* <div className="text-white text-7xl font-bold h-full w-full bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
+              Make your dreams true
+            </div> */}
             <a href="#slide2" className="btn btn-circle">
               ❯
             </a>
