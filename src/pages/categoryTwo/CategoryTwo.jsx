@@ -31,7 +31,7 @@ const CategoryTwo = () => {
               </h4>
             </div>
             <Link to={`/train/${train.id}`}>
-              <button className="bg-gradient-to-br from-sky-400 to-sky-700 hover:bg-sky-500 w-full p-2 mt-2 rounded-lg text-xl font-bold text-white">
+              <button className="bg-gradient-to-br from-sky-400 to-sky-700 hover:bg-gradient-to-br hover:from-sky-700 hover:to-sky-500 w-full p-2 mt-2 rounded-lg text-xl font-bold text-white">
                 View Details
               </button>
             </Link>
