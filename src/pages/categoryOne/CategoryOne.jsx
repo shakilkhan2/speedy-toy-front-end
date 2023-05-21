@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import Rating from "react-rating";
+import { BsStar, BsStarFill } from "react-icons/bs";
 
 const CategoryOne = () => {
   const { user } = useContext(AuthContext);
@@ -30,11 +32,19 @@ const CategoryOne = () => {
           >
             <img className="h-52 rounded-lg" src={car.picture} alt="" />
             <div className="">
-              <h4 className="text-black text-lg font-bold">{car.name}</h4>
-              <h4 className="text-black text-xl font-bold">${car.price}</h4>
-              <h4 className="text-black text-xl font-bold">
-                ratings: {car.rating}
+              <h4 className="text-sky-800 text-lg font-bold">{car.name}</h4>
+              <h4 className="text-sky-950 text-lg font-semibold">
+                <span className="font-bold text-sky-800">Price:</span> $
+                {car.price}
               </h4>
+              <Rating
+                className="text-amber-400"
+                placeholderRating={car.rating}
+                readonly
+                emptySymbol={<BsStar />}
+                placeholderSymbol={<BsStarFill />}
+                fullSymbol={<BsStarFill />}
+              ></Rating>
             </div>
             <Link to={`/car/${car.id}`}>
               <button

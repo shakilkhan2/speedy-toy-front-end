@@ -21,7 +21,7 @@ const MyToys = () => {
   const { user } = useContext(AuthContext);
   //   console.log(user);
   const [myToys, setMyToys] = useState([]);
-  const [selectedButton, setSelectedButton] = useState("previous");
+  const [selectedButton, setSelectedButton] = useState("");
 
   useEffect(() => {
     if (!user?.email) return;

@@ -6,4 +6,6 @@
 - User can also check details info of the product but login is mandatory.
 - You can also read our blog to the blogs section.
 
+* User can search toys by toy name.
+
 ### Don't forget to visit our site: https://speedy-toy.web.app/
