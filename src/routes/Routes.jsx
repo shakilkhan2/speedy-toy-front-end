@@ -13,6 +13,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import MyToys from "../pages/myToys/MyToys";
 import ToyDetails from "../pages/toyDetails/ToyDetails";
 import ErrorPage from "../pages/error/ErrorPage";
+import UpdateModal from "../pages/update/UpdateModal";
 
 const router = createBrowserRouter([
   {
@@ -52,9 +53,22 @@ const router = createBrowserRouter([
         ),
         loader: () => fetch(`https://speedy-toy-server.vercel.app/toys`),
       },
+
       {
         path: "toy-details/:id",
-        element: <PrivateRoutes><ToyDetails /></PrivateRoutes>,
+        element: (
+          <PrivateRoutes>
+            <ToyDetails />
+          </PrivateRoutes>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://speedy-toy-server-shakilkhan2.vercel.app/addedtoys/${params.id}`
+          ),
+      },
+      {
+        path: "/update/:id",
+        element: <UpdateModal></UpdateModal>,
         loader: ({ params }) =>
           fetch(
             `https://speedy-toy-server-shakilkhan2.vercel.app/addedtoys/${params.id}`

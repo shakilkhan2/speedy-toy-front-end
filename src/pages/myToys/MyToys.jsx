@@ -1,16 +1,23 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link } from "react-router-dom";
-import { toast } from "react-hot-toast";
+
 import Swal from "sweetalert2";
-import UpdateModal from "../update/UpdateModal";
+
 import useTitle from "../../hooks/useTitle";
 
 const MyToys = () => {
+  // ---------------------
+  const handleClick = (buttonName) => {
+    setSelectedButton(buttonName);
+  };
+  // -----------------
+
   useTitle("My Toys");
   const { user } = useContext(AuthContext);
   //   console.log(user);
   const [myToys, setMyToys] = useState([]);
+  const [selectedButton, setSelectedButton] = useState("previous");
 
   useEffect(() => {
     fetch(
@@ -66,6 +73,38 @@ const MyToys = () => {
       <h1 className="text-center text-3xl my-8 text-sky-500 font-bold">
         My Toys
       </h1>
+{/* sort */}
+<div >
+  <form className="border w-28" action="#">
+    <label htmlFor="sort"></label>
+    <select name="sort" id="sort">
+      <option value="lowest">Price lowest</option>
+      <option value="highest">Price highest</option>
+    </select>
+  </form>
+</div>
+      {/* sorting */}
+      <div className="w-60 mx-auto mb-4">
+        <div className="btn-group grid grid-cols-2">
+          <button
+            className={`btn ${
+              selectedButton === "previous" ? "btn-colored" : "btn-outline"
+            }`}
+            onClick={() => handleClick("previous")}
+          >
+            Low Prices
+          </button>
+          <button
+            className={`btn ${
+              selectedButton === "next" ? "btn-colored" : "btn-outline"
+            }`}
+            onClick={() => handleClick("next")}
+          >
+            High Prices
+          </button>
+        </div>
+      </div>
+
       <div className="rounded-lg border-sky-500">
         <div className="overflow-x-auto w-full ">
           <table className="table w-full">
@@ -115,7 +154,9 @@ const MyToys = () => {
                     </Link>
                   </th>
                   <th>
-                    <UpdateModal myToys={MyToys}></UpdateModal>
+                    <Link to={`/update/${toys._id}`}>
+                      <button className="btn btn-ghost btn-xs">Update</button>
+                    </Link>
                   </th>
                   <th>
                     <Link>
