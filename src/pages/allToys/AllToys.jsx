@@ -2,8 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import useTitle from "../../hooks/useTitle";
 
 const AllToys = () => {
+  useTitle("All Toys")
   const { user } = useContext(AuthContext);
   const [allToys, setAllToys] = useState([]);
 

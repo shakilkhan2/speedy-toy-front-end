@@ -39,8 +39,8 @@ const CategoryOne = () => {
             <Link to={`/car/${car.id}`}>
               <button
                 onClick={() => {
-                  if(user?.uid ) return
-                   toast.error("You have to log in first to view details");
+                  if (user?.uid) return;
+                  toast.error("You have to log in first to view details");
                 }}
                 className="bg-gradient-to-br from-sky-400 to-sky-700 hover:bg-gradient-to-br hover:from-sky-700 hover:to-sky-500 w-full p-2 mt-2 rounded-lg text-xl font-bold text-white"
               >

@@ -2,8 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import Swal from "sweetalert2";
+import UpdateModal from "../update/UpdateModal";
+import useTitle from "../../hooks/useTitle";
 
 const MyToys = () => {
+  useTitle("My Toys");
   const { user } = useContext(AuthContext);
   //   console.log(user);
   const [myToys, setMyToys] = useState([]);
@@ -18,33 +22,49 @@ const MyToys = () => {
 
   // delete toys:
   const handleDelete = (id) => {
-    const proceed = window.confirm("Delete?");
-    if (proceed) {
-      fetch(
-        `https://speedy-toy-server-shakilkhan2.vercel.app/addedtoys/${id}`,
-        {
-          method: "DELETE",
-        }
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          // Perform actions or update UI based on the response
-          console.log(data);
-          const restData = myToys.filter((toy) => toy._id !== id);
-          setMyToys(restData);
-          toast.success("Successfully Deleted!");
-        })
-        .catch((error) => {
-          // Handle any errors that occurred during the request
-          console.error(error);
-        });
-    }
+    // const proceed = window.confirm("Delete?");
+    // const proceed =
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Deleted!", "Your toy has been deleted.", "success");
+        fetch(
+          `https://speedy-toy-server-shakilkhan2.vercel.app/addedtoys/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            // Perform actions or update UI based on the response
+            console.log(data);
+
+            const restData = myToys.filter((toy) => toy._id !== id);
+            setMyToys(restData);
+            // toast.success("Successfully Deleted!");
+          })
+          .catch((error) => {
+            // Handle any errors that occurred during the request
+            console.error(error);
+          });
+      }
+    });
+    // if (proceed) {
+
+    // }
   };
 
   return (
     <div>
       <h1 className="text-center text-3xl my-8 text-sky-500 font-bold">
-        My Toys:{myToys.length}
+        My Toys
       </h1>
       <div className="rounded-lg border-sky-500">
         <div className="overflow-x-auto w-full ">
@@ -95,10 +115,7 @@ const MyToys = () => {
                     </Link>
                   </th>
                   <th>
-                    <Link>
-                      {" "}
-                      <button className="btn btn-ghost btn-xs">Update</button>
-                    </Link>
+                    <UpdateModal myToys={MyToys}></UpdateModal>
                   </th>
                   <th>
                     <Link>

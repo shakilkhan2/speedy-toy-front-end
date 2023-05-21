@@ -3,8 +3,10 @@ import Slider from "../slider/Slider";
 
 import Gallery from "../gallery/Gallery";
 import Categories from "../categories/Categories";
+import useTitle from "../../hooks/useTitle";
 
 const Home = () => {
+  useTitle("Home")
   return (
     <div>
       <div>
