@@ -22,7 +22,7 @@ const CategoryThree = () => {
       <h3 className="text-center text-3xl font-bold text-sky-500 mt-8 mb-4 ">
         Tricky Truck
       </h3>
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {myTrucks.map((car) => (
           <div
             key={car.id}

@@ -2,7 +2,7 @@ import React from "react";
 
 const Gallery = () => {
   return (
-    <div className="grid grid-cols-3 gap-4 ">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
       <div className="h-96 w-96 rounded-lg relative cursor-pointer overflow-hidden transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-90  duration-300">
         <img
           data-aos="zoom-in"

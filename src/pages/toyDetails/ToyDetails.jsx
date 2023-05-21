@@ -14,12 +14,12 @@ const ToyDetails = () => {
           <img className="rounded-lg h-60 " src={toy.photo} alt="" />
         </div>
         <div className="bg-sky-100 ms-20 p-4 rounded-lg w-[50%]">
-          <h1 className="text-4xl font-bold">{toy.productName}</h1>
-          <h1>{toy.seller}</h1>
-          <h1>{toy.email}</h1>
-          <h1>{toy.price}</h1>
-          <h1>{toy.quantity}</h1>
-          <h1>rating: {toy.rating}</h1>
+          <h1 className="text-4xl font-bold text-sky-800">{toy.productName}</h1>
+          <h1 className="text-lg "><span className="text-xl font-semibold">Seller: </span>{toy.seller}</h1>
+          
+          <h1 className="text-lg "><span className="text-xl font-semibold">Price: </span>${toy.price}</h1>
+          <h1 className="text-lg "><span className="text-xl font-semibold">Quantity: </span>{toy.quantity}pc</h1>
+          <h1 className="text-lg "><span className="text-xl font-semibold">rating:</span> {toy.rating}</h1>
           <h1>{toy.description}</h1>
           <button className="bg-sky-600 hover:bg-sky-500  p-2 mt-2 rounded-xl px-4 text-lg font-bold text-white">
             Add to Cart

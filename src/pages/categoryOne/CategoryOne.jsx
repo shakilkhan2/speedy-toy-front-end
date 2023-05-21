@@ -22,14 +22,14 @@ const CategoryOne = () => {
       <h3 className="text-center text-3xl font-bold text-sky-500 mt-8 mb-4 ">
         Sports Car
       </h3>
-      <div className="grid grid-cols-4 gap-4  ">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4  ">
         {myCars.map((car) => (
           <div
             key={car.id}
             className=" bg-gradient-to-br from-amber-100 to-sky-300 p-4 rounded-lg drop-shadow-2xl "
           >
             <img className="h-52 rounded-lg" src={car.picture} alt="" />
-            <div className="text-center">
+            <div className="">
               <h4 className="text-black text-lg font-bold">{car.name}</h4>
               <h4 className="text-black text-xl font-bold">${car.price}</h4>
               <h4 className="text-black text-xl font-bold">

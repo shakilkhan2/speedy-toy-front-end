@@ -9,7 +9,11 @@ import useTitle from "../../hooks/useTitle";
 const MyToys = () => {
   // ---------------------
   const handleClick = (buttonName) => {
-    setSelectedButton(buttonName);
+    fetch(
+      `https://speedy-toy-server-shakilkhan2.vercel.app/addedtoys?email=${user?.email}&sort=${buttonName}`
+    )
+      .then((res) => res.json())
+      .then((data) => setMyToys(data));
   };
   // -----------------
 
@@ -20,6 +24,7 @@ const MyToys = () => {
   const [selectedButton, setSelectedButton] = useState("previous");
 
   useEffect(() => {
+    if (!user?.email) return;
     fetch(
       `https://speedy-toy-server-shakilkhan2.vercel.app/addedtoys?email=${user?.email}`
     )
@@ -73,16 +78,8 @@ const MyToys = () => {
       <h1 className="text-center text-3xl my-8 text-sky-500 font-bold">
         My Toys
       </h1>
-{/* sort */}
-<div >
-  <form className="border w-28" action="#">
-    <label htmlFor="sort"></label>
-    <select name="sort" id="sort">
-      <option value="lowest">Price lowest</option>
-      <option value="highest">Price highest</option>
-    </select>
-  </form>
-</div>
+      {/* sort */}
+
       {/* sorting */}
       <div className="w-60 mx-auto mb-4">
         <div className="btn-group grid grid-cols-2">
@@ -90,7 +87,7 @@ const MyToys = () => {
             className={`btn ${
               selectedButton === "previous" ? "btn-colored" : "btn-outline"
             }`}
-            onClick={() => handleClick("previous")}
+            onClick={() => handleClick("acc")}
           >
             Low Prices
           </button>
@@ -98,7 +95,7 @@ const MyToys = () => {
             className={`btn ${
               selectedButton === "next" ? "btn-colored" : "btn-outline"
             }`}
-            onClick={() => handleClick("next")}
+            onClick={() => handleClick("dec")}
           >
             High Prices
           </button>

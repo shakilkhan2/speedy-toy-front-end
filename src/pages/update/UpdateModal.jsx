@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useParams, useRevalidator } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
 
@@ -7,30 +7,27 @@ const UpdateModal = () => {
   const { user } = useContext(AuthContext);
   const { id } = useParams();
   const toy = useLoaderData();
+  let revalidator = useRevalidator();
+
   console.log(toy);
 
   const handleUpdateToy = (event) => {
     event.preventDefault();
 
     const form = event.target;
-    const name = form.name.value;
-    const photo = form.photo.value;
-    const seller = form.seller.value;
-    const email = form.email.value;
-    const category = form.category.value;
+    // const name = form.name.value;
+    // const photo = form.photo.value;
+    // const seller = form.seller.value;
+    // const email = form.email.value;
+    // const category = form.category.value;
     const price = form.price.value;
-    const rating = form.rating.value;
+    // const rating = form.rating.value;
     const quantity = form.quantity.value;
     const about = form.about.value;
 
     const toyInfo = {
-      productName: name,
-      photo: photo,
-      seller: seller,
-      sellerEmail: email,
-      category: category,
+      //   productName: name,
       price: price,
-      rating: rating,
       quantity: quantity,
       description: about,
     };
@@ -47,6 +44,7 @@ const UpdateModal = () => {
       .then((res) => res.json())
 
       .then((data) => {
+        revalidator.revalidate();
         Swal.fire("Good job!", "Your product successfully updated!", "success");
         console.log(data);
       });
@@ -64,9 +62,8 @@ const UpdateModal = () => {
           Update a Toy
         </h1>
         <hr className="w-[70%] mx-auto mt-2 mb-8 border-sky-500" />
-        
+
         <div className="flex justify-between">
-            
           <input
             className="mx-auto pl-2 pb-3 w-[45%] my-6 border rounded-lg border-sky-500"
             type="text"

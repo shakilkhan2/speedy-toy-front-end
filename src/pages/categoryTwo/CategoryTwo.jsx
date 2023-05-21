@@ -22,7 +22,7 @@ const CategoryTwo = () => {
       <h3 className="text-center text-3xl font-bold text-sky-500 mt-8 mb-4">
         Exiting Trains
       </h3>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {myTrains.map((train) => (
           <div
             key={train.id}
