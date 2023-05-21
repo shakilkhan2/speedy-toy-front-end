@@ -6,7 +6,7 @@ import Categories from "../categories/Categories";
 import useTitle from "../../hooks/useTitle";
 
 const Home = () => {
-  useTitle("Home")
+  useTitle("Home");
   return (
     <div>
       <div>
@@ -27,8 +27,9 @@ const Home = () => {
         Shop by Categories
       </h1>
       <Categories />
-      <div  className="mt-12 cursor-pointer">
-        <img data-aos="flip-left"
+      <div className="mt-12 cursor-pointer">
+        <img
+          data-aos="zoom-in"
           className="w-[99%] mx-auto"
           src="https://cdn.shopify.com/s/files/1/2598/1878/files/GameSubBox_BannerSkinny_ec8fb89f-afee-45ce-b26d-56f4f0512ac6_1200x.png?v=1669947770"
           alt=""
